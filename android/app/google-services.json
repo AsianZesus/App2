@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "713104540090",
+    "firebase_url": "https://floodauth-default-rtdb.asia-southeast1.firebasedatabase.app",
+    "project_id": "floodauth",
+    "storage_bucket": "floodauth.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:713104540090:android:22cd13cc76a3ffba1d1d83",
+        "android_client_info": {
+          "package_name": "com.example.flood_app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "713104540090-jgmngps11u1bhtk1ok8ttmd12585tcqo.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.flood_app",
+            "certificate_hash": "969e81ae58f4b945a443456cdf8fb606bbc37c5f"
+          }
+        },
+        {
+          "client_id": "713104540090-6gsv0nvm8hnaskig4758umhb3v3g59r8.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDF24FmX2VPDLsqJsPlzhAZN5raK5E294g"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "713104540090-6gsv0nvm8hnaskig4758umhb3v3g59r8.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "713104540090-i5i5o7fdalgqi3vaq0jm62phrjgqap7d.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.floodApp.RunnerTests"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
