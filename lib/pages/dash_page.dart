@@ -44,7 +44,7 @@ class _DashPageState extends State<DashPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Welcome"),
+        title: const Text("FLOOD  ALERT"),
         backgroundColor: Colors.black,
       ),
       drawer: MyDrawer(
@@ -53,6 +53,7 @@ class _DashPageState extends State<DashPage> {
       ),
       body: Column(
         children: [
+          const SizedBox(height: 30,),
           Expanded(
             child: FirebaseAnimatedList(
               query: dbRef,

@@ -1,4 +1,5 @@
 import 'package:flood_app/components/bottom_nav_bar.dart';
+import 'package:flood_app/pages/chat_page.dart';
 import 'package:flood_app/pages/dash_page.dart';
 import 'package:flood_app/pages/map_page.dart';
 import 'package:flood_app/pages/settings_page.dart';
@@ -23,41 +24,37 @@ class _HomePageState extends State<HomePage> {
   //final
   final List<Widget> _pages = [
     // Home page
-    DashPage(),
+    const DashPage(),
 
     // Map page
-    MapPage(),
+    const MapPage(),
 
     // Settings page
-    SettingsPage(),
+    const SettingsPage(),
   ];
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.grey[300],
-      
       bottomNavigationBar: MyBottomNavBar(
         onTabChange: (index) => navigateBottomBar(index),
       ),
       body: _pages[_selectedIndex],
       floatingActionButton: FloatingActionButton(
         onPressed: () async {
-          // dynamic conversationObject = {
-          //   'appId':
-          //       '238886987f58a2f798d03876520abea92', // The [APP_ID](https://dashboard.kommunicate.io/settings/install) obtained from kommunicate dashboard.
-          // };
+          // Navigator.pop(context);
 
-          // KommunicateFlutterPlugin.buildConversation(conversationObject)
-          //     .then((clientConversationId) {
-          //   print("Conversation builder success : " +
-          //       clientConversationId.toString());
-          // }).catchError((error) {
-          //   print("Conversation builder error : " + error.toString());
-          // });
+          Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) => ChatbotScreen(),
+            ),
+          );
         },
-        child: Icon(Icons.chat,
-        color: Colors.black,),
+        child: const Icon(
+          Icons.chat,
+        ),
       ),
     );
   }
