@@ -55,6 +55,7 @@ class _HomePageState extends State<HomePage> {
         child: const Icon(
           Icons.chat,
         ),
+        backgroundColor: Colors.black,
       ),
     );
   }

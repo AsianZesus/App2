@@ -1,4 +1,5 @@
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flood_app/pages/password_page.dart';
 import 'package:flood_app/services/auth_service.dart';
 import 'package:flutter/material.dart';
 import 'package:flood_app/components/my_textfield.dart';
@@ -39,6 +40,13 @@ class _LoginPageState extends State<LoginPage> {
       Navigator.pop(context);
       //show error to user
       displayMessage(e.code);
+      // showDialog(
+      //     context: context,
+      //     builder: (context) {
+      //       return AlertDialog(
+      //         content: Text(e.code.toString()),
+      //       );
+      //     });
     }
   }
 
@@ -54,7 +62,7 @@ class _LoginPageState extends State<LoginPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.grey,
+      backgroundColor: Colors.grey[300],
       body: SafeArea(
         child: Center(
           child: SingleChildScrollView(
@@ -95,8 +103,18 @@ class _LoginPageState extends State<LoginPage> {
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.end,
                     children: [
-                      Text('Forgot Password?',
-                          style: TextStyle(color: Colors.grey[600])),
+                      GestureDetector(
+                        onTap: () {
+                          Navigator.push(context,
+                              MaterialPageRoute(builder: (context) {
+                            return ForgotPasswordPage();
+                          }));
+                        },
+                        child: Text('Forgot Password?',
+                            style: TextStyle(
+                                color: Colors.blue,
+                                fontWeight: FontWeight.bold)),
+                      ),
                     ],
                   ),
                 ),
@@ -141,8 +159,9 @@ class _LoginPageState extends State<LoginPage> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     // google button
-                    SquareTile(onTap: () => AuthService().signInWithGoogle(),
-                    imagePath: 'assets/images/google.png'),
+                    SquareTile(
+                        onTap: () => AuthService().signInWithGoogle(),
+                        imagePath: 'assets/images/google.png'),
                   ],
                 ),
 
