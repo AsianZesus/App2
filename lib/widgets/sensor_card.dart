@@ -45,11 +45,11 @@ class MySensorCard extends StatelessWidget {
                       width: 60,
                       image: assetImage,
                     ),
-                    SizedBox(
+                    const SizedBox(
                       height: 10,
                     ),
                     Text(name, style: kBodyText.copyWith(color: Colors.white)),
-                    SizedBox(
+                    const SizedBox(
                       height: 10,
                     ),
                     Text('$value $unit',

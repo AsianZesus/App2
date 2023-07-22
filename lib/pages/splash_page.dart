@@ -3,7 +3,7 @@ import 'package:flood_app/auth/auth.dart';
 import 'package:flutter/material.dart';
 
 class SplashPage extends StatefulWidget {
-  SplashPage({Key? key}) : super(key: key);
+  const SplashPage({Key? key}) : super(key: key);
 
   @override
   _SplashPageState createState() => _SplashPageState();
@@ -15,9 +15,9 @@ class _SplashPageState extends State<SplashPage> {
     return EasySplashScreen(
       logo: Image.asset(
           'assets/images/splash.png',),
-      backgroundColor: Colors.grey.shade500,
+      backgroundColor: Colors.black,
       showLoader: false,
-      navigator: AuthPage(),
+      navigator: const AuthPage(),
       durationInSeconds: 2,
     );
   }

@@ -1,5 +1,3 @@
-import 'dart:ffi';
-
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flood_app/components/my_textfield.dart';
 import 'package:flutter/material.dart';

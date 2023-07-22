@@ -107,10 +107,10 @@ class _LoginPageState extends State<LoginPage> {
                         onTap: () {
                           Navigator.push(context,
                               MaterialPageRoute(builder: (context) {
-                            return ForgotPasswordPage();
+                            return const ForgotPasswordPage();
                           }));
                         },
-                        child: Text('Forgot Password?',
+                        child: const Text('Forgot Password?',
                             style: TextStyle(
                                 color: Colors.blue,
                                 fontWeight: FontWeight.bold)),

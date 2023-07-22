@@ -37,7 +37,7 @@ void main() async {
     initializationSettings
   );
 
-  print("Notificaitons: $initialized");
+  print('Notifications Initialize: $initialized');
 
   runApp(const MyApp());
 }
@@ -59,8 +59,8 @@ class _MyAppState extends State<MyApp> {
       // darkTheme: darkTheme,
       initialRoute: '/',
       routes: {
-        '/': (context) => SplashPage(),
-        '/home': (context) => AuthPage(),
+        '/': (context) => const SplashPage(),
+        '/home': (context) => const AuthPage(),
       },
     );
   }

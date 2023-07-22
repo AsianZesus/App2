@@ -1,7 +1,4 @@
 import 'package:firebase_messaging/firebase_messaging.dart';
-import 'package:flood_app/main.dart';
-import 'package:flood_app/pages/dash_page.dart';
-import 'package:flutter/material.dart';
 
 Future<void> handleBackgroundMessage(RemoteMessage message) async {
 }

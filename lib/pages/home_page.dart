@@ -29,6 +29,9 @@ class _HomePageState extends State<HomePage> {
     // Map page
     const MapPage(),
 
+    // Chat page
+    const ChatbotScreen(),
+
     // Settings page
     const SettingsPage(),
   ];
@@ -41,22 +44,6 @@ class _HomePageState extends State<HomePage> {
         onTabChange: (index) => navigateBottomBar(index),
       ),
       body: _pages[_selectedIndex],
-      floatingActionButton: FloatingActionButton(
-        onPressed: () async {
-          // Navigator.pop(context);
-
-          Navigator.push(
-            context,
-            MaterialPageRoute(
-              builder: (context) => ChatbotScreen(),
-            ),
-          );
-        },
-        child: const Icon(
-          Icons.chat,
-        ),
-        backgroundColor: Colors.black,
-      ),
     );
   }
 }

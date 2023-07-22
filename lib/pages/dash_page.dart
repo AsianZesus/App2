@@ -1,5 +1,4 @@
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:firebase_database/ui/firebase_animated_list.dart';
 import 'package:flood_app/components/drawer.dart';
@@ -20,11 +19,12 @@ class DashPage extends StatefulWidget {
 
 class _DashPageState extends State<DashPage> {
   void showNotificatinons() async{
-    AndroidNotificationDetails androidDetails = AndroidNotificationDetails(
+    AndroidNotificationDetails androidDetails = const AndroidNotificationDetails(
         "notificaitons-flood", "Flood Notifications",
-        priority: Priority.max, importance: Importance.max);
+        priority: Priority.max, importance: Importance.max,
+        styleInformation: BigTextStyleInformation("The sensors have detected an unusual surge of water that surpases the normal threshold. As a result, there is a high risk of flooding in low-lying areas and near water bodies."));
 
-    DarwinNotificationDetails iosDetails = DarwinNotificationDetails(
+    DarwinNotificationDetails iosDetails = const DarwinNotificationDetails(
       presentAlert: true,
       presentBadge: true,
       presentSound: true,
@@ -35,7 +35,9 @@ class _DashPageState extends State<DashPage> {
       iOS: iosDetails
     );
 
-    await notificationsPlugin.show(0, "Flood Alert", "This is a test", notiDetails);
+    const String symbol = '\u26A0';
+
+    await notificationsPlugin.show(0, "Flood Alert  $symbol", "The sensors have detected an unusual surge of water that surpases the normal threshold. As a result, there is a high risk of flooding in low-lying areas and near water bodies.", notiDetails);
   }
 
   final Query dbRef = FirebaseDatabase.instance.ref().child('HC');
@@ -145,7 +147,8 @@ class _DashPageState extends State<DashPage> {
                 );
               },
             ),
-          )
+          ),
+          
         ],
       ),
     );
