@@ -17,6 +17,13 @@ class _ChatbotScreenState extends State<ChatbotScreen> {
     // Add more predefined questions and answers as needed
   };
 
+  final Map<String, String?> hiddenResponses = {
+    'What is your favorite color?': 'My favorite color is blue.',
+    'What do you like to do in your free time?':
+        'I enjoy chatting with people.',
+    // Add more hidden questions and answers as needed
+  };
+
   final TextEditingController _textEditingController = TextEditingController();
   List<String> questions = [];
   int currentQuestionIndex = -1;
@@ -139,21 +146,31 @@ class _ChatbotScreenState extends State<ChatbotScreen> {
       final userMessage = Message(text: text, sender: 'User');
       _messages.insert(0, userMessage);
 
-      if (currentQuestionIndex != -1 && !_isWaitingForResponse) {
-        final question = questions[currentQuestionIndex];
-        final response = predefinedResponses[question];
-        setState(() {
-          _isWaitingForResponse = true;
-        });
-        Future.delayed(const Duration(seconds: 1), () {
-          setState(() {
-            final chatbotResponse =
-                Message(text: response ?? '', sender: 'Floodbot');
-            _messages.insert(0, chatbotResponse);
-            _isWaitingForResponse = false;
-          });
-        });
+      String? response;
+
+      // Check if the typed question matches any question in predefinedResponses
+      if (predefinedResponses.containsKey(text)) {
+        response = predefinedResponses[text];
       }
+
+      // If not found in predefinedResponses, check hiddenResponses
+      if (response == null && hiddenResponses.containsKey(text)) {
+        response = hiddenResponses[text];
+      }
+
+      setState(() {
+        _isWaitingForResponse = true;
+      });
+
+      Future.delayed(const Duration(seconds: 1), () {
+        setState(() {
+          final chatbotResponse = Message(
+              text: response ?? 'I am not sure how to respond to that.',
+              sender: 'Floodbot');
+          _messages.insert(0, chatbotResponse);
+          _isWaitingForResponse = false;
+        });
+      });
 
       _textEditingController.clear();
       currentQuestionIndex = -1;

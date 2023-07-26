@@ -4,10 +4,12 @@ import 'package:flutter/material.dart';
 class MyDrawer extends StatelessWidget {
   final void Function()? onAboutTap;
   final void Function()? onLogOutTap;
+  final void Function()? onSettingsTap;
 
   const MyDrawer({super.key,
   required this.onAboutTap,
-  required this.onLogOutTap});
+  required this.onLogOutTap,
+  required this.onSettingsTap});
 
   @override
   Widget build(BuildContext context) {
@@ -25,6 +27,9 @@ class MyDrawer extends StatelessWidget {
           MyListTile(icon: Icons.priority_high_rounded, 
           text: 'A B O U T',
           onTap: onAboutTap),
+
+          MyListTile(icon: Icons.settings, text: "S E T T I N G S", 
+          onTap: onSettingsTap),
 
           MyListTile(icon: Icons.logout, 
           text: "L O G O U T", 

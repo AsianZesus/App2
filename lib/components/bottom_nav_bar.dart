@@ -27,9 +27,7 @@ class MyBottomNavBar extends StatelessWidget {
             GButton(icon: Icons.map,
             text: 'Map',),
             GButton(icon: Icons.chat,
-            text: 'Chatbot',),
-            GButton(icon: Icons.settings,
-            text: "Settings",)
+            text: 'Chatbot',)
           ],
         ),
       ),
