@@ -1,16 +1,16 @@
-import 'dart:async';
-
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:firebase_database/ui/firebase_animated_list.dart';
 import 'package:flood_app/components/drawer.dart';
 import 'package:flood_app/main.dart';
 import 'package:flood_app/pages/about_page.dart';
+import 'package:flood_app/pages/events.dart';
 import 'package:flood_app/pages/panel_widget.dart';
 import 'package:flood_app/pages/settings_page.dart';
 import 'package:flood_app/widgets/sensor_card.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:sliding_up_panel/sliding_up_panel.dart';
 
 class DashPage extends StatefulWidget {
@@ -24,12 +24,16 @@ class DashPage extends StatefulWidget {
 
 class _DashPageState extends State<DashPage> {
   void showNotificatinons() async {
-    AndroidNotificationDetails androidDetails = const AndroidNotificationDetails(
-        "notificaitons-flood", "Flood Notifications",
-        priority: Priority.max,
-        importance: Importance.max,
-        styleInformation: BigTextStyleInformation(
-            "The sensors have detected an unusual surge of water that surpases the normal threshold. As a result, there is a high risk of flooding in low-lying areas and near water bodies."));
+    AndroidNotificationDetails androidDetails =
+        const AndroidNotificationDetails(
+      "notificaitons-flood",
+      "Flood Notifications",
+      priority: Priority.max,
+      importance: Importance.max,
+      styleInformation: BigTextStyleInformation(
+        "The sensors have detected an unusual surge of water that surpases the normal threshold. As a result, there is a high risk of flooding in low-lying areas and near water bodies.",
+      ),
+    );
 
     DarwinNotificationDetails iosDetails = const DarwinNotificationDetails(
       presentAlert: true,
@@ -42,11 +46,29 @@ class _DashPageState extends State<DashPage> {
 
     const String symbol = '\u26A0';
 
+    // Get the current date and time as UNIX timestamp (number of seconds since epoch)
+    final now = DateTime.now();
+    final notificationDateTime =
+        now.millisecondsSinceEpoch ~/ 1000; // Convert to seconds
+
+    // Store notification details in shared preferences
+    final prefs = await SharedPreferences.getInstance();
+    final notifications = prefs.getStringList('notifications') ?? [];
+    notifications.add("Flood Alert  $symbol");
+    notifications.add(
+      "The sensors have detected an unusual surge of water that surpases the normal threshold. As a result, there is a high risk of flooding in low-lying areas and near water bodies.",
+    );
+    notifications.add(notificationDateTime.toString()); // Convert to String
+
+    prefs.setStringList('notifications', notifications);
+
+    // Show the notification immediately
     await notificationsPlugin.show(
-        0,
-        "Flood Alert  $symbol",
-        "The sensors have detected an unusual surge of water that surpases the normal threshold. As a result, there is a high risk of flooding in low-lying areas and near water bodies.",
-        notiDetails);
+      0,
+      "Flood Alert  $symbol",
+      "The sensors have detected an unusual surge of water that surpases the normal threshold. As a result, there is a high risk of flooding in low-lying areas and near water bodies.",
+      notiDetails,
+    );
   }
 
   final Query dbRef = FirebaseDatabase.instance.ref().child('HC');
@@ -88,13 +110,14 @@ class _DashPageState extends State<DashPage> {
 
   @override
   Widget build(BuildContext context) {
+    final panelHeightClosed = MediaQuery.of(context).size.height * 0.1;
+
     return Scaffold(
       appBar: AppBar(
         title: const Text("FLOOD  ALERT"),
         backgroundColor: Colors.black,
       ),
       drawer: MyDrawer(
-        onAboutTap: goToAboutPage,
         onLogOutTap: signOut,
         onSettingsTap: onSettingsTap,
       ),
@@ -177,9 +200,13 @@ class _DashPageState extends State<DashPage> {
             ),
           ],
         ),
-        panelBuilder: (controller) => PanelWidget(
+        minHeight: panelHeightClosed,
+        parallaxEnabled: true,
+        parallaxOffset: .2,
+        panelBuilder: (ScrollController controller) => PanelWidget(
           controller: controller,
         ),
+        borderRadius: const BorderRadius.vertical(top: Radius.circular(18)),
       ),
     );
   }

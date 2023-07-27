@@ -2,12 +2,10 @@ import 'package:flood_app/components/my_list_tile.dart';
 import 'package:flutter/material.dart';
 
 class MyDrawer extends StatelessWidget {
-  final void Function()? onAboutTap;
   final void Function()? onLogOutTap;
   final void Function()? onSettingsTap;
 
   const MyDrawer({super.key,
-  required this.onAboutTap,
   required this.onLogOutTap,
   required this.onSettingsTap});
 
@@ -23,10 +21,6 @@ class MyDrawer extends StatelessWidget {
             size: 64,
             ),
           ),
-
-          MyListTile(icon: Icons.priority_high_rounded, 
-          text: 'A B O U T',
-          onTap: onAboutTap),
 
           MyListTile(icon: Icons.settings, text: "S E T T I N G S", 
           onTap: onSettingsTap),

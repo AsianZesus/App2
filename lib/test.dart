@@ -1,14 +1,14 @@
 import 'package:flood_app/const/hidden_responses.dart';
 import 'package:flutter/material.dart';
 
-class ChatbotScreen extends StatefulWidget {
-  const ChatbotScreen({Key? key}) : super(key: key);
+class TestScreen extends StatefulWidget {
+  const TestScreen({Key? key}) : super(key: key);
 
   @override
-  _ChatbotScreenState createState() => _ChatbotScreenState();
+  _TestScreenState createState() => _TestScreenState();
 }
 
-class _ChatbotScreenState extends State<ChatbotScreen> {
+class _TestScreenState extends State<TestScreen> {
   final List<Message> _messages = [];
   final Map<String, String?> predefinedResponses = {
     'What is the app about?': 'The app is designed to...',

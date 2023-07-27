@@ -2,6 +2,7 @@ import 'package:flood_app/components/bottom_nav_bar.dart';
 import 'package:flood_app/pages/chat_page.dart';
 import 'package:flood_app/pages/dash_page.dart';
 import 'package:flood_app/pages/map_page.dart';
+import 'package:flood_app/test.dart';
 import 'package:flutter/material.dart';
 
 class HomePage extends StatefulWidget {
@@ -30,6 +31,9 @@ class _HomePageState extends State<HomePage> {
 
     // Chat page
     const ChatbotScreen(),
+
+    // cot
+    const TestScreen(),
   ];
 
   @override

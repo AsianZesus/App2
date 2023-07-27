@@ -51,6 +51,8 @@ dependencies:
   firebase_messaging: ^14.6.5
   sliding_up_panel2: ^3.3.0+1
   sliding_up_panel: ^2.0.0+1
+  shared_preferences: ^2.2.0
+  intl: ^0.18.1
 
 dev_dependencies:
   flutter_test:
