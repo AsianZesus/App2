@@ -1,3 +1,5 @@
+import 'package:flood_app/pages/about_page.dart';
+import 'package:flood_app/pages/change_password.dart';
 import 'package:flood_app/pages/events.dart';
 import 'package:flutter/material.dart';
 
@@ -18,9 +20,10 @@ class _SettingsPageState extends State<SettingsPage> {
       ),
       body: ListView(
         children: [
-          _buildOptionItem(context, 'About', AboutScreen()),
-          _buildOptionItem(context, 'Event', NotificationsPage()),
-          _buildOptionItem(context, 'FAQ', FaqScreen()),
+          _buildOptionItem(context, 'About', AboutPage()),
+          _buildOptionItem(context, 'Saved Alerts', NotificationsPage()),
+          _buildOptionItem(context, 'Change Password', ChangePasswordPage()),
+
         ],
       ),
     );
@@ -35,35 +38,6 @@ class _SettingsPageState extends State<SettingsPage> {
           MaterialPageRoute(builder: (context) => screen),
         );
       },
-    );
-  }
-}
-
-// Dummy screens for demonstration purposes
-class AboutScreen extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text('About'),
-      ),
-      body: Center(
-        child: Text('About Screen'),
-      ),
-    );
-  }
-}
-
-class FaqScreen extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text('FAQ'),
-      ),
-      body: Center(
-        child: Text('FAQ Screen'),
-      ),
     );
   }
 }

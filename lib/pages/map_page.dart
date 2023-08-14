@@ -29,8 +29,8 @@ class _MapPageState extends State<MapPage> {
     // Define your list of locations with coordinates and texts
     List<Map<String, dynamic>> locations = [
       {
-        'latitude': 27.675622405462303,
-        'longitude': 85.43415524478056,
+        'latitude': 27.70790343888775,
+        'longitude': 85.32596595639622,
         'text': 'Marker 1',
       },
       // Add more locations as needed
@@ -97,8 +97,8 @@ class _MapPageState extends State<MapPage> {
     return FlutterMap(
       mapController: _mapController, // Assign the map controller
       options: MapOptions(
-        center: LatLng(27.675622405462303, 85.43415524478056),
-        zoom: 15,
+        center: LatLng(27.7076878362209, 85.32487877305384),
+        zoom: 18,
       ),
       children: [
         TileLayer(

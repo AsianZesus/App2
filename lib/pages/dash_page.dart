@@ -23,7 +23,13 @@ class DashPage extends StatefulWidget {
 }
 
 class _DashPageState extends State<DashPage> {
+  bool isFloodNotificationShown = false;
+
   void showNotificatinons() async {
+    if (isFloodNotificationShown) {
+      return; // Don't show the notification again if it's already shown
+    }
+
     AndroidNotificationDetails androidDetails =
         const AndroidNotificationDetails(
       "notificaitons-flood",
@@ -69,6 +75,9 @@ class _DashPageState extends State<DashPage> {
       "The sensors have detected an unusual surge of water that surpases the normal threshold. As a result, there is a high risk of flooding in low-lying areas and near water bodies.",
       notiDetails,
     );
+
+    // After the notification is shown, set the flag to true
+    isFloodNotificationShown = true;
   }
 
   final Query dbRef = FirebaseDatabase.instance.ref().child('HC');
@@ -142,7 +151,7 @@ class _DashPageState extends State<DashPage> {
                     distList!.removeAt(0);
                   }
 
-                  if (distdata > 100) {
+                  if (distdata > 0) {
                     showNotificatinons();
                   }
 
@@ -176,7 +185,7 @@ class _DashPageState extends State<DashPage> {
                     waterList!.removeAt(0);
                   }
 
-                  if (waterdata > 100) {
+                  if (waterdata > 0) {
                     showNotificatinons();
                   }
 

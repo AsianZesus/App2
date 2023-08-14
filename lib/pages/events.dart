@@ -47,7 +47,7 @@ class _NotificationsPageState extends State<NotificationsPage> {
 
     return Scaffold(
       appBar: AppBar(
-        title: Text("Notifications"),
+        title: Text("Saved Alerts"),
         backgroundColor: Colors.black,
       ),
       body: ListView.builder(

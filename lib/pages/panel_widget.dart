@@ -47,7 +47,7 @@ class PanelWidget extends StatelessWidget {
                       style: TextStyle(fontSize: 16),
                     ),
                     Text(
-                      '''\nFirst and foremost, contact the relevant or local authorities. The nationwide toll free number "1155" can be dialed to clear any queries regarding flood related information you need.''',
+                      '''\nFirst and foremost, contact the relevant or local authorities. The nationwide toll free number "1155" can be dialed to clear any queries regarding flood related information you need or in case of emergenices.''',
                       style: TextStyle(fontSize: 16),
                     ),
                     Text(

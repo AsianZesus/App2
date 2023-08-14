@@ -11,10 +11,8 @@ class ChatbotScreen extends StatefulWidget {
 class _ChatbotScreenState extends State<ChatbotScreen> {
   final List<Message> _messages = [];
   final Map<String, String?> predefinedResponses = {
-    'What is the app about?': 'The app is designed to...',
-    'How do I get started?': 'To get started, you need to...',
-    'Can I customize the settings?':
-        'Yes, you can customize the settings by...',
+    'What is the app about?': 'The app is designed as medium to give flood alerts to the user based on the thresholds put on the sensor.',
+    'How does the app work?': 'The sensors monitor the water level in real-time and sends the monitored data to the mobile. This data is then used to send alerts to the user who sign up within the app.',
     // Add more predefined questions and answers as needed
   };
 
@@ -46,7 +44,7 @@ class _ChatbotScreenState extends State<ChatbotScreen> {
   void _showWelcomeMessage() {
     setState(() {
       final welcomeMessage = Message(
-        text: "Welcome to the Chatbot! How can I assist you?",
+        text: "Welcome to Flood bot! How can I assist you?",
         sender: "Floodbot",
       );
       _messages.insert(0, welcomeMessage);
@@ -57,7 +55,7 @@ class _ChatbotScreenState extends State<ChatbotScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Chatbot'),
+        title: const Text('Floodbot'),
         backgroundColor: Colors.black,
       ),
       body: Column(
@@ -74,7 +72,7 @@ class _ChatbotScreenState extends State<ChatbotScreen> {
                           radius: 20.0,
                           backgroundColor: Colors.transparent,
                           backgroundImage:
-                              AssetImage('assets/images/apple.png'),
+                              AssetImage('assets/images/profile.png'),
                         )
                       : const CircleAvatar(
                           radius: 20.0,
